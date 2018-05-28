@@ -1,6 +1,26 @@
 import shop from '../api/shop'
 import * as types from '../constants/ActionTypes'
 
+/**
+ * prev state:{cart: {…}, products: {…}}
+ * action:{type: "RECEIVE_PRODUCTS", products: Array(3)}
+   next state:
+{
+    cart: {
+        addedIds:[],
+        quantityById:{}
+    }
+    products:{
+        byId:{
+            1: {id: 1, title: "iPad 4 Mini", price: 500.01, inventory: 2}, 
+            2: {id: 2, title: "H&M T-Shirt White", price: 10.99, inventory: 10}, 
+            3: {id: 3, title: "Charli XCX - Sucker CD", price: 19.99, inventory: 5}
+        },
+        visibleIds:[1, 2, 3]
+    }
+}
+ */
+
 // 这个应该是action，action中包含type属性
 const receiveProducts = products => ({
   type: types.RECEIVE_PRODUCTS,
@@ -8,6 +28,16 @@ const receiveProducts = products => ({
 })
 
 //dispatch后面跟action，这样提供 dispatch(action) 方法更新 state
+// 第二步：getAllProducts调用shop.getProducts，获取products.json中数据，触发receiveProducts action，然后调用reducers函数，查询是调用reducers/products.js的byId
+/**
+  shop.getProducts输出为：
+  getProducts(cb, timeout) {
+        return setTimeout(function () {
+            return cb(__WEBPACK_IMPORTED_MODULE_0__products_json___default.a), timeout || TIMEOUT;
+        });
+    }
+shop.getProduct(这个括号中就是cb，没有timeout属性)
+ */
 export const getAllProducts = () => dispatch => {
     shop.getProducts(products => {
         dispatch(receiveProducts(products));
@@ -53,7 +83,7 @@ getState是从点击add to cart中传来的
  */
 export const checkout = products => (dispatch,getState) =>{
     const {cart} = getState()
-    console.log(products);
+    // console.log(products);
     dispatch({
         type: types.CHECKOUT_REQUEST
     })

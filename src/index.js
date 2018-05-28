@@ -17,7 +17,7 @@ const store = createStore(
   reducer,
   applyMiddleware(...middleware)
 )
-
+// 第一步：先执行getAllProducts
 store.dispatch(getAllProducts())
 
 render(
