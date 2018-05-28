@@ -1,0 +1,37 @@
+{
+  "name": "redux-shop-cart",
+  "version": "1.0.0",
+  "description": "shopping cart",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sunhannie/redux-shop-cart.git"
+  },
+  "keywords": [
+    "shopping",
+    "redux"
+  ],
+  "author": "hehuiyun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sunhannie/redux-shop-cart/issues"
+  },
+  "homepage": "https://github.com/sunhannie/redux-shop-cart#readme",
+  "devDependencies": {
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "react-scripts": "^1.1.4"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.1",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "react-redux": "^5.0.7",
+    "redux": "^3.5.2",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.1.0"
+  }
+}
