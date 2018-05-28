@@ -5,6 +5,12 @@ import { checkout } from '../actions'
 import { getTotal, getCartProducts } from '../reducers'
 import Cart from '../components/Cart'
 
+/**
+ * 
+ * @param export default Cart ，所以import Cart from '../components/Cart'，不用{}
+ * Cart函数有{ products, total, onCheckoutClicked }参数，此参数可以作为prop吗？
+ */
+
 const CartContainer = ({ products, total, checkout }) => (
   <Cart
     products={products}

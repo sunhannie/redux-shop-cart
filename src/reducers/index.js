@@ -20,14 +20,30 @@ export const getTotal = state =>
     )
     .toFixed(2)  
 
-// 获取被添加到购物车中的产品   //getAddedIds(state)得到被添加到购物车的id数组，比如[3,2]
-export const getCartProducts = state => {
-    console.log(getAddedIds(state));
-    return getAddedIds(state).map(id => (
-      {
+/**
+ * 
+ * 获取被添加到购物车中的产品   //getAddedIds(state)得到被添加到购物车的id数组，比如[3,2]
+ * 当点击Add to cart，执行getProduct(state, id) 输出为 {id: 2, title: "H&M T-Shirt White", price: 10.99, inventory: 9}
+ * 
+ * {
         ...getProduct(state, id),   //产品对象
         quantity: getQuantity(state, id)   //数量
-    }))
+ } 输出为
+ {id: 2, title: "H&M T-Shirt White", price: 10.99, inventory: 9, quantity: 1}
+ 应用了对象合并
+ */
+
+export const getCartProducts = state => {    
+    return getAddedIds(state).map(id => {
+      console.log({
+        ...getProduct(state, id),   //产品对象
+        quantity: getQuantity(state, id)   //数量
+      });
+      return ({
+        ...getProduct(state, id),   //产品对象
+        quantity: getQuantity(state, id)   //数量
+      })
+    })
 }
 
 /**

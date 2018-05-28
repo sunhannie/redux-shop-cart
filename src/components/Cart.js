@@ -2,6 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Product from './Product'
 
+// 无状态函数式组件，用纯函数的形式来表达，它做的事情只是根据输入来展示组件，没有其他副作用。没有内部state，不需要组件生命周期函数。 比如// 用一个纯函数表示 const Hobby = (props) => <li>{props.hobby}</li>;
+/**
+ * 
+ * key是新添加的prop，
+ */
 const Cart  = ({ products, total, onCheckoutClicked }) => {
   const hasProducts = (products.length > 0);
   const nodes = hasProducts ? (
