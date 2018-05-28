@@ -44,10 +44,16 @@ export const getAllProducts = () => dispatch => {
     })
 }
 
-const addToCartUnsafe = productId => ({
-  type: types.ADD_TO_CART,
-  productId
-})
+/**
+ * 
+ * @param 当点击产品2，productId为2
+ */
+const addToCartUnsafe = productId => {
+    return ({
+        type: types.ADD_TO_CART,
+        productId
+    })
+}
 /*
  * action 创建函数
  * 1. Redux 中只需把 action 创建函数的结果传给 dispatch() 方法即可发起一次 dispatch 过程。
@@ -57,7 +63,13 @@ const addToCartUnsafe = productId => ({
  */
 
 //getState().products.byId[productId].inventory怎么来的？ 此处创建的action创建函数会自动dispatch
+/**
+ * 当点击add to cart，触发此函数，getState是从byId中types为RECEIVE_PRODUCTS获取到的
+ * 
+ * getState()输出为：{cart: {…}, products: {…}}
+ */
 export const addToCart = productId => (dispatch,getState) => {
+    // console.log(getState());
     if (getState().products.byId[productId].inventory>0){
         dispatch(addToCartUnsafe(productId))
     }

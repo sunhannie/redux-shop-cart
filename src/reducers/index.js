@@ -35,10 +35,10 @@ export const getTotal = state =>
 
 export const getCartProducts = state => {    
     return getAddedIds(state).map(id => {
-      console.log({
-        ...getProduct(state, id),   //产品对象
-        quantity: getQuantity(state, id)   //数量
-      });
+      // console.log({
+      //   ...getProduct(state, id),   //产品对象
+      //   quantity: getQuantity(state, id)   //数量
+      // });
       return ({
         ...getProduct(state, id),   //产品对象
         quantity: getQuantity(state, id)   //数量

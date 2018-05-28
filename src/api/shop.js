@@ -2,12 +2,12 @@ import _products from './products.json'
 const TIMEOUT = 100
 export default {
     getProducts: (cb,timeout) => setTimeout(() => {
-        console.log('timeout'+timeout);
+        // console.log('timeout'+timeout);
         return cb(_products),timeout || TIMEOUT
     }),
     buyProducts: (payload, cb, timeout) => setTimeout(() => {
-        console.log('payload'+payload);
-         console.log('cb:'+cb);
+        // console.log('payload'+payload);
+        //  console.log('cb:'+cb);
         return (cb(), timeout || TIMEOUT)
     })
 }

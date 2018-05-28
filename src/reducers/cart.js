@@ -12,10 +12,12 @@ const initialState = {
 const addedIds = (state = initialState.addedIds, action) => {
   switch (action.type) {
     case ADD_TO_CART:
+     //此处state为[]
       if (state.indexOf(action.productId) !== -1) {
         return state
       }
-      return [ ...state, action.productId ]
+      
+      return [ ...state, action.productId ]  //当点击产品1时为[1]
     default:
       return state
   }

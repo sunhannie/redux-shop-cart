@@ -4,6 +4,7 @@ import { RECEIVE_PRODUCTS, ADD_TO_CART } from '../constants/ActionTypes'
 /**
  * 
 {...state}输出为：{id: 1, title: "iPad 4 Mini", price: 500.01, inventory: 2}
+ ADD_TO_CART return输出为：{id: 2, title: "H&M T-Shirt White", price: 10.99, inventory: 9}
  */
 const products = (state, action) => {
   switch (action.type) {
