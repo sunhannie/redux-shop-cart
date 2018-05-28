@@ -29,12 +29,23 @@ export const getTotal = state =>
 //     }))
 // }
 
-// 不能加大括号是为什么？
+/**
+ * 
+ * @param {*} state 
+ * array.map(function(currentValue,index,arr), thisValue)
+ */
+// 不能加大括号是为什么？ console.log('s') 写在哪里比较合适？写入函数一直报错
+
 export const getCartProducts = state =>
-  getAddedIds(state).map(id => ({
+  getAddedIds(state).map(id =>
+//   console.log('s') 
+  (
+      
+  {
     ...getProduct(state, id),
     quantity: getQuantity(state, id)
-  }))
+  }
+  ))
 
 
 /**
