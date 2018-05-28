@@ -20,32 +20,34 @@ export const getTotal = state =>
     )
     .toFixed(2)  
 
-// 获取被添加到购物车中的产品   //getAddedIds(state)得到数组
-// export const getCartProducts = state => {
-//     // console.log(getAddedIds(state));
-//     getAddedIds(state).map(id => ({
-//         ...getProduct(state, id),   //产品对象
-//         quantity: getQuantity(state, id)   //数量
-//     }))
-// }
+// 获取被添加到购物车中的产品   //getAddedIds(state)得到被添加到购物车的id数组，比如[3,2]
+export const getCartProducts = state => {
+    console.log(getAddedIds(state));
+    return getAddedIds(state).map(id => (
+      {
+        ...getProduct(state, id),   //产品对象
+        quantity: getQuantity(state, id)   //数量
+    }))
+}
 
 /**
  * 
  * @param {*} state 
  * array.map(function(currentValue,index,arr), thisValue)
+ * 代码块，返回对象，需要用()括起来
  */
-// 不能加大括号是为什么？ console.log('s') 写在哪里比较合适？写入函数一直报错
+// 两种写法，上面和下面写法都可以
 
-export const getCartProducts = state =>
-  getAddedIds(state).map(id =>
-//   console.log('s') 
-  (
+// export const getCartProducts = state =>
+//   getAddedIds(state).map(id =>
+// //   console.log('s') 
+//   (
       
-  {
-    ...getProduct(state, id),
-    quantity: getQuantity(state, id)
-  }
-  ))
+//   {
+//     ...getProduct(state, id),
+//     quantity: getQuantity(state, id)
+//   }
+//   ))
 
 
 /**

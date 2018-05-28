@@ -28,7 +28,29 @@ const mapStateToProps = (state) => ({
   total: getTotal(state)
 })
 
+
+
 export default connect(
   mapStateToProps,
   { checkout }
 )(CartContainer)
+
+/**
+ * 练习箭头函数区域：
+ * 如果不是返回值，箭头后面是{};
+ * 如果是返回值，1.如果返回值是对象需要用()包含返回值 2. 如果返回值不是对象，可以不用()
+ */
+/**
+ * 
+
+function foo() {
+  setTimeout(() => {
+    console.log('id:', this.id);
+  }, 100);
+}
+
+var id = 21;
+
+foo.call({ id: 42 });
+
+ */
