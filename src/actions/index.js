@@ -33,13 +33,32 @@ export const addToCart = productId => (dispatch,getState) => {
     }
 }
 
-// 此action创建函数dispatch两次
+// 此action创建函数dispatch两次，以下定义是被绑定的 action 创建函数并自动 dispatch，比如const boundAddTodo = text => dispatch(addTodo(text))，dispatch括号中是一个对象，下面函数直接填写对象，没有用函数返回对象或者变量代替，所以能理解这种写法
+/**
+ * 点击购物车的checkout会执行此函数
+ * {cart}输出一个对象：{cart:{addedIds: [2,3], quantityById: {2: 2, 3: 1}}}
+ * products输出Add to cart的产品数组：
+ * [{id: 3, title: "Charli XCX - Sucker CD", price: 19.99, inventory: 4, quantity: 1},
+{id: 2, title: "H&M T-Shirt White", price: 10.99, inventory: 9, quantity: 1}]
+
+通过action的type后面值，执行对应的reducer函数。
+
+dispatch输出为：
+dispatch(action) {
+    return _dispatch(action);
+}
+
+getState是从点击add to cart中传来的
+点击checkout，hasProducts为false；点击add to cart，hasProducts为true，由此hasProducts是一直变化的
+ */
 export const checkout = products => (dispatch,getState) =>{
     const {cart} = getState()
+    console.log(products);
     dispatch({
         type: types.CHECKOUT_REQUEST
     })
     shop.buyProducts(products,() => {
+        
         dispatch({
             type: types.CHECKOUT_SUCCESS, //如果失败可以写CHECKOUT_FAILURE
             cart
