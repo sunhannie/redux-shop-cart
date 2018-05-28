@@ -3,8 +3,8 @@ import * as types from '../constants/ActionTypes'
 
 // 这个应该是action，action中包含type属性
 const receiveProducts = products => ({
-    type:types.RECEIVE_PRODUCTS,
-    products
+  type: types.RECEIVE_PRODUCTS,
+  products
 })
 
 //dispatch后面跟action，这样提供 dispatch(action) 方法更新 state
@@ -15,8 +15,8 @@ export const getAllProducts = () => dispatch => {
 }
 
 const addToCartUnsafe = productId => ({
-    type:type.ADD_TO_CART,
-    productId
+  type: types.ADD_TO_CART,
+  productId
 })
 /*
  * action 创建函数
@@ -37,11 +37,11 @@ export const addToCart = productId => (dispatch,getState) => {
 export const checkout = products => (dispatch,getState) =>{
     const {cart} = getState()
     dispatch({
-        type:type.CHECKOUT_REQUEST
+        type: types.CHECKOUT_REQUEST
     })
     shop.buyProducts(products,() => {
         dispatch({
-            type:type.CHECHOUT_SUCCESS, //如果失败可以写CHECKOUT_FAILURE
+            type: types.CHECKOUT_SUCCESS, //如果失败可以写CHECKOUT_FAILURE
             cart
         })
     })
