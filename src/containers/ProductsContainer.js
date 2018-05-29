@@ -28,7 +28,7 @@ ProductsContainer.propTypes = {
 }
 /**
  * 
- * products
+ * state.products从哪里来的？
  */
 const mapStateToProps = state => ({
   products: getVisibleProducts(state.products)

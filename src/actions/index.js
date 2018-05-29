@@ -66,10 +66,14 @@ const addToCartUnsafe = productId => {
 /**
  * 当点击add to cart，触发此函数，getState是从byId中types为RECEIVE_PRODUCTS获取到的
  * 
- * getState()输出为：{cart: {…}, products: {…}}
+ * getState()输出为：{cart: {…}, products: {…}}  此state跟最开始state一样的键值关系
+ * 
+ * dispatch(action) {
+       return _dispatch(action);
+   }
  */
 export const addToCart = productId => (dispatch,getState) => {
-    // console.log(getState());
+    console.log(dispatch);
     if (getState().products.byId[productId].inventory>0){
         dispatch(addToCartUnsafe(productId))
     }

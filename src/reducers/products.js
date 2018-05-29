@@ -49,8 +49,11 @@ const byId = (state = {}, action) => {
       return state
   }
 }
-
+/**
+ * 调用receiveProducts
+ */
 const visibleIds = (state = [], action) => {
+
   switch (action.type) {
     case RECEIVE_PRODUCTS:
       return action.products.map(product => product.id)
@@ -59,14 +62,21 @@ const visibleIds = (state = [], action) => {
   }
 }
 // combineReducers 辅助函数的`作用`是，把一个由`多个不同 reducer 函数作为 value 的 object`，合并成一个最终的 reducer 函数，然后就可以对这个 reducer 调用 createStore 方法。
-// byId和visibleIds返回的都是对象
+// combineReducers 接收拆分之后的 reducer 函数组成的对象，并且创建出具有相同键对应状态对象的函数。
+//这句话的意思是combineReducers是一个函数，它会创建出具有相同键的对应状态对象  http://www.redux.org.cn/docs/recipes/reducers/UsingCombineReducers.html
+//combineReducers 会调用所有的 reducer，严格来说是它包装的所有 reducer
+/**
+ * 此处合并state，byId返回的是对象，visibleIds返回的是数组
+ */
 export default combineReducers({
     byId,
     visibleIds
 })
 // 一个普通函数
-export const getProduct = (state, id) =>
-    state.byId[id]
+export const getProduct = (state, id) => {
+  return state.byId[id]
+}
+    
 
 export const getVisibleProducts = state =>
     state.visibleIds.map(id => getProduct(state, id))

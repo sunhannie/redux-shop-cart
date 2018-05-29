@@ -1,7 +1,10 @@
 import { combineReducers } from 'redux'
 import cart, * as fromCart from './cart'
 import products, * as fromProducts from './products'
-
+//products是export default导出的
+/**
+ * 此处合并state，cart和products为键
+ */
 export default combineReducers({
   cart,
   products
